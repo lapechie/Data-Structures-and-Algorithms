@@ -4,7 +4,7 @@
 struct node
 {
     int a;
-    int b;
+    struct node *b;
 };
 
 int main()
@@ -12,7 +12,7 @@ int main()
     struct node *node1;
     struct node *node2;
     struct node *node3;
-    
+
     node3->a = 1;
 
     node1 = node2 = node3;
