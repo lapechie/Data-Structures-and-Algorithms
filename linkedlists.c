@@ -6,28 +6,28 @@
 // circular
 // doubly circular
 
-struct node
-{
-    int data;
-    struct node *next;
-};
-
 void main()
 {
+    struct node
+    {   
+        int data;
+        struct node *next;
+    };
+
     struct node *head;
     struct node *newnode;
     struct node *temp;
     head = NULL;
     int choice;
     
-    while (choice)
-    {
+    while(choice)
+    {   
         newnode = (struct node*)malloc(sizeof(struct node));
         
         printf("Enter data: \n");
-        scanf("%d\n", &newnode->data);
-        newnode->next = NULL;
-        if(head == NULL)
+        scanf("%d", &newnode->data);
+        newnode->next = 0;
+        if(head == 0)
         {
             head = temp = newnode;
         }
@@ -38,11 +38,14 @@ void main()
         }
 
         printf("Do you want to coninue? (0,1) \n");
-        scanf("%d\n", &choice);
+        scanf("%d", &choice);
     }
+    printf("--------------------------------\n");
     temp = head;
     while(temp != 0)
     {
-        printf("%d\n", temp->data);
+        printf("\n%d\n", temp->data);
+        temp = temp->next;
     }
+    
 }
