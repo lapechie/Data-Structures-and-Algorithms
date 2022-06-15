@@ -32,6 +32,11 @@ void delete_from_beg(struct node* head)
     display_ll(head);
 }
 
+void delete_from_end()
+{
+    
+}
+
 void insert_beg(struct node* head)
 {
     struct node* newnode;
