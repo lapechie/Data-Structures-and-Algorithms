@@ -1,20 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h> 
-// types of linked lists
-// singly
-// doubly
-// circular
-// doubly circular
+
 struct node
 {   
     int data;
     struct node *next;
 };
 
+struct node *temp;
+
 void display_ll(struct node* head)
 {
     printf("--------------------------------\n");
-    struct node *temp;
     temp = head;
     while(temp != 0)
     {
@@ -25,16 +22,46 @@ void display_ll(struct node* head)
 
 void delete_from_beg(struct node* head)
 {
-    struct node *temp;
     temp = head;
     head = head->next; 
     free(temp); 
     display_ll(head);
 }
 
-void delete_from_end()
+void delete_from_end(struct node* head)
 {
-    
+    struct node* prevnode;
+    temp = head;
+
+    while(temp->next != 0)
+    {
+        prevnode = temp;
+        temp = temp->next;
+    }
+    prevnode->next = 0;
+    free(temp);
+    display_ll(head);
+}
+
+void delete_from_pos(struct node* head)
+{
+    struct node* nextnode;
+    int pos;
+    int i = 1;
+
+    temp = head;
+    printf("Enter position to delete:\n");
+    scanf("%d", &pos);
+
+    while(i < pos -1)
+    {   
+        temp = temp->next;
+        i++;
+    }
+    nextnode = temp->next;
+    temp->next = nextnode->next;
+    free(nextnode);
+    display_ll(head);
 }
 
 void insert_beg(struct node* head)
@@ -88,13 +115,26 @@ void insert_at_loc(struct node* head)
     display_ll(head);
 }
 
-void main()
+void length_ll(struct node* head)
+{
+    temp = head;
+    int i = 1;
+
+    while(temp->next != 0)
+    {
+        temp = temp->next;
+        i++;
+    }
+    printf("%d", i);
+}
+
+int main()
 {
     struct node *head;
     struct node *newnode;
-    struct node *temp;
-    head = NULL;
-    int choice;
+    
+    head = 0;
+    int choice = 1;
     // creating a linked list
     while(choice)
     {   
@@ -125,6 +165,11 @@ void main()
 
     //insert_at_loc(head);
 
-    delete_from_beg(head);
+    //delete_from_beg(head);
 
+    //delete_from_pos(head);
+
+    length_ll(head);
+    return 0;
+    
 }
