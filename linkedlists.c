@@ -128,6 +128,25 @@ void length_ll(struct node* head)
     printf("%d", i);
 }
 
+void reverse_ll(struct node* head)
+{
+    struct node* prevnode;
+    struct node* nextnode;
+
+    prevnode = 0;
+    temp = nextnode = head;
+
+    while(nextnode != 0)
+    {   
+        nextnode = nextnode->next;
+        temp->next = prevnode;
+        prevnode = temp;
+        temp = nextnode;
+    }
+    head = prevnode;
+    display_ll(head);
+}
+
 int main()
 {
     struct node *head;
@@ -169,7 +188,9 @@ int main()
 
     //delete_from_pos(head);
 
-    length_ll(head);
+    //length_ll(head);
+
+    reverse_ll(head);
     return 0;
     
 }
