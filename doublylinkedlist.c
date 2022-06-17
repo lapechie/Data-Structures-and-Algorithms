@@ -114,13 +114,72 @@ void insertAtPos()
     newnode->next->prev = newnode;
 }
 
+void deleteFromBeg()
+{
+    struct node *temp;
+    temp = head;
+    head = head->next;
+    head->prev = 0;
+    free(temp);
+
+}
+
+void deleteFromEnd()
+{
+    struct node *temp;
+    temp = tail;
+    tail = tail->prev;
+    tail->next = 0;
+    free(temp);
+}
+
+void deleteFromPos()
+{
+    struct node *temp;
+    int pos;
+    int i = 1;
+
+    printf("Enter position to delete: \n");
+    scanf("%d", &pos);
+
+    temp = head;
+    while( i < pos)
+    {
+        temp = temp->next;
+        i++;
+    }
+    temp->prev->next = temp->next;
+    temp->next->prev = temp->prev;
+    free(temp);
+}
+
+void reverse_ll()
+{
+    struct node *temp;
+    struct node *nextnode;
+
+    temp = head;
+
+    while(temp != 0)
+    {
+        nextnode = temp->next;
+        temp->next = temp->prev;
+        temp->prev = nextnode;
+        temp = nextnode;
+    }
+    temp = head;
+    head = tail;
+    tail = head;
+
+}
+
 int main()
 {   
     
     create();
 
     display();
-    insertAtPos();
+    reverse_ll();
     display();
 
 
