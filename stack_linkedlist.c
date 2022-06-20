@@ -31,7 +31,7 @@ void display()
     {   
         while(temp != 0)
         {
-            printf("%d", temp->data);
+            printf("\n%d\n", temp->data);
             temp = temp->next;
         }
     }
@@ -39,7 +39,7 @@ void display()
 
 void peak()
 {
-    printf("%d", top->data);
+    printf("\n%d\n", top->data);
 }
 
 void pop()
@@ -52,5 +52,11 @@ void pop()
 
 int main()
 {
+    push(6);
+    push(7);
+    push(9);
+    push(3);
+    display();
+    peak();
     return 0;
 }
